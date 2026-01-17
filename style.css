@@ -10,6 +10,76 @@
     height: 40px;
     background-size: 60%
 }
+/* Tooltip para texto con scroll seguro */
+.text-tooltip {
+  position: relative;
+  cursor: pointer;
+  color: #1e90ff;
+  text-decoration: underline dotted;
+}
+
+/* Contenido del tooltip */
+.text-tooltip .text-tooltip-content {
+  visibility: hidden;
+  width: 380px;
+  max-height: 350px; /* altura máxima */
+  overflow-y: auto; /* scroll vertical */
+  background: linear-gradient(145deg, #1a1a1a, #2b2b2b);
+  color: #fff;
+  text-align: left;
+  padding: 15px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  pointer-events: auto; /* permite interactuar con scroll */
+}
+
+/* Flecha del tooltip */
+.text-tooltip .text-tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #2b2b2b transparent transparent transparent;
+}
+
+/* Mostrar tooltip al pasar el cursor por el texto o el tooltip */
+.text-tooltip:hover .text-tooltip-content,
+.text-tooltip .text-tooltip-content:hover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px); /* efecto sutil al aparecer */
+}
+
+/* Estilo scroll bonito para Chrome, Edge, Safari */
+.text-tooltip .text-tooltip-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.text-tooltip .text-tooltip-content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.text-tooltip .text-tooltip-content::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+.text-tooltip .text-tooltip-content::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
 
 #preloader,
 .invertapplied,
